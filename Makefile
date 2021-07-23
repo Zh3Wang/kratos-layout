@@ -18,7 +18,7 @@ init:
 # generate errors code
 errors:
 	protoc --proto_path=. \
-               --proto_path=./third_party \
+               --proto_path=../../../third_party \
                --go_out=paths=source_relative:. \
                --go-errors_out=paths=source_relative:. \
                $(API_PROTO_FILES)
@@ -27,7 +27,7 @@ errors:
 # generate internal proto
 config:
 	protoc --proto_path=. \
-	       --proto_path=./third_party \
+	       --proto_path=../../../third_party \
  	       --go_out=paths=source_relative:. \
 	       $(INTERNAL_PROTO_FILES)
 
@@ -35,7 +35,7 @@ config:
 # generate api proto
 api:
 	protoc --proto_path=. \
-	       --proto_path=./third_party \
+	       --proto_path=../../../third_party \
  	       --go_out=paths=source_relative:. \
  	       --go-http_out=paths=source_relative:. \
  	       --go-grpc_out=paths=source_relative:. \
