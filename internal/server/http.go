@@ -3,6 +3,7 @@ package server
 import (
 	v1 "github.com/go-kratos/kratos-layout/api/helloworld/v1"
 	"github.com/go-kratos/kratos-layout/internal/conf"
+	"github.com/go-kratos/kratos-layout/internal/pkg/middleware/auth"
 	"github.com/go-kratos/kratos-layout/internal/service"
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/go-kratos/kratos/v2/middleware/logging"
@@ -22,6 +23,7 @@ func NewHTTPServer(c *conf.Server, greeter *service.GreeterService, logger log.L
 			logging.Server(logger),
 			metrics.Server(),
 			validate.Validator(),
+			auth.NewAuthMiddleware(),
 		),
 	}
 	if c.Http.Network != "" {

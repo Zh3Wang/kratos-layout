@@ -1,7 +1,7 @@
 syntax = "proto3";
 package kratos.api;
 
-option go_package = "github.com/go-kratos/kratos-layout/internal/conf;conf";
+option go_package = "design/app/user/internal/conf;conf";
 
 import "google/protobuf/duration.proto";
 
@@ -38,4 +38,11 @@ message Data {
   }
   Database database = 1;
   Redis redis = 2;
+}
+
+message Registry{
+  message Etcd {
+    repeated string addr = 1;
+  }
+  Etcd etcd = 1;
 }
